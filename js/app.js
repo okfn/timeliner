@@ -65,7 +65,10 @@ var Timeliner = Backbone.View.extend({
     }
     this.dataExplorer = null;
     var $el = $('<div />');
+    // explicitly set width as otherwise Timeline does extends a bit too far (seems to use window width rather than width of actual div)
     $el.appendTo(this.explorerDiv);
+    console.log(this.el.width());
+    $el.width(this.el.width() - 45);
     this.dataExplorer = new recline.View.Timeline({
       model: dataset,
       el: $el
