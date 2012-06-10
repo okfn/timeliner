@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Recline Timeliner</title>
+  <meta name="description" content="The Recline Timeliner">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="vendor/recline/vendor/bootstrap/2.0.2/css/bootstrap.css">
+  <link rel="stylesheet" href="vendor/recline/vendor/leaflet/0.3.1/leaflet.css">
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="vendor/recline/vendor/leaflet/0.3.1/leaflet.ie.css" />
+  <![endif]-->
+  <link rel="stylesheet" href="vendor/recline/vendor/timeline/20120520/css/timeline.css">
+
+  <!-- Recline CSS components -->
+  <link rel="stylesheet" href="vendor/recline/dist/recline.css">
+  <!-- /Recline CSS components -->
+
+  <!-- Custom CSS for the Timeliner Online App -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet" href="vendor/recline/vendor/bootstrap/2.0.2/css/bootstrap-responsive.css">
+
+  <!-- 3rd party JS libraries -->
+  <script type="text/javascript" src="vendor/recline/vendor/jquery/1.7.1/jquery.js"></script>
+  <script type="text/javascript" src="vendor/recline/vendor/underscore/1.1.6/underscore.js"></script>
+  <script type="text/javascript" src="vendor/recline/vendor/backbone/0.5.1/backbone.js"></script>
+  <script type="text/javascript" src="vendor/recline/vendor/moment/1.6.2/moment.js"></script>
+  <script type="text/javascript" src="vendor/recline/vendor/mustache/0.5.0-dev/mustache.js"></script>
+  <script type="text/javascript" src="vendor/recline/vendor/bootstrap/2.0.2/bootstrap.js"></script>
+  <script type="text/javascript" src="vendor/recline/vendor/leaflet/0.3.1/leaflet.js"></script>
+  <script type="text/javascript" src="vendor/recline/vendor/timeline/20120520/js/timeline.js"></script>
+
+  <script type="text/javascript" src="vendor/recline/dist/recline.js"></script>
+
+  <!-- non-library javascript specific to this demo -->
+  <script type="text/javascript" src="js/app.js"></script>
+</head>
+<body>
+<div class="recline-app">
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <a class="brand" href="#">Recline Timeliner</a>
+        <ul class="nav pull-right">
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="content">
+
+      <div class="page-home backbone-page">
+        <div class="row">
+          <div class="span6 offset3">
+            <form class="js-load-url form-horizontal">
+              <fieldset>
+                <legend>Load Timeline Data</legend>
+                <div class="control-group">
+                  <label for="source" class="control-label">Google Spreadsheet URL</label>
+                  <div class="controls">
+                    <input type="text" name="source" class="input span4" placeholder="URL to data source" />
+                    <p class="help-block">Make sure you have <strong>published your spreadsheet</strong> before trying to import from it (File menu -&gt; Publish to Web in Google Docs)</p>
+                  </div>
+                </div>
+              </fieldset>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Load &raquo;</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-explorer backbone-page">
+        <div class="data-explorer-here"></div>
+      </div>
+
+    </div> <!-- /content -->
+  </div> <!-- / container-fluid -->
+</div>
+</body>
+</html>
+
