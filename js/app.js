@@ -67,12 +67,24 @@ var Timeliner = Backbone.View.extend({
     var $el = $('<div />');
     // explicitly set width as otherwise Timeline does extends a bit too far (seems to use window width rather than width of actual div)
     $el.appendTo(this.explorerDiv);
-    console.log(this.el.width());
     $el.width(this.el.width() - 45);
     this.dataExplorer = new recline.View.Timeline({
       model: dataset,
       el: $el
     });
+    this.dataExplorer.convertRecord = function(record, fields) {
+      var out = this._convertRecord(record, fields);
+      if (record.get('image')) {
+        out.asset = {
+          media: record.get('image')
+        };
+      }
+      out.text = record.get('description');
+      // hacky but it will work ...
+      // do not want time part of the dates
+      out.startDate = String(out.startDate.getFullYear()) + ',' + String(out.startDate.getMonth()+1) + ',' + String(out.startDate.getDate());
+      return out;
+    }
     // show the view
     this.viewExplorer();
     // load the data
