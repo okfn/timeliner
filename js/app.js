@@ -95,7 +95,6 @@ var Timeliner = Backbone.View.extend({
     e.preventDefault();
     var $form = $(e.target);
     var source = $form.find('input[name="source"]').val();
-    window.location.hash = '#explorer';
     window.location.search = '?backend=gdocs&url=' + source;
 //    var datasetInfo = {
 //      id: 'my-dataset',
