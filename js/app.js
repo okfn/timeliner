@@ -80,6 +80,9 @@ var Timeliner = Backbone.View.extend({
         };
       }
       out.text = record.get('description');
+      if (record.get('source')) {
+        out.text += '<p style="font-style: italic">Source: ' + record.get('source') + '</em></p>';
+      }
       // hacky but it will work ...
       // do not want time part of the dates
       out.startDate = String(out.startDate.getFullYear()) + ',' + String(out.startDate.getMonth()+1) + ',' + String(out.startDate.getDate());
