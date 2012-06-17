@@ -60,12 +60,12 @@
           <div class="span6 offset3">
             <form class="js-load-url form-horizontal">
               <fieldset>
-                <legend>Load Timeline Data</legend>
+                <legend>Connect to Google Spreadsheet</legend>
                 <div class="control-group">
                   <label for="source" class="control-label">Google Spreadsheet URL</label>
                   <div class="controls">
-                    <input type="text" name="source" class="input span4" placeholder="URL to data source" />
-                    <p class="help-block">Make sure you have <strong>published your spreadsheet</strong> before trying to import from it (File menu -&gt; Publish to Web in Google Docs)</p>
+                    <input type="text" value="https://docs.google.com/spreadsheet/ccc?key=0Aon3JiuouxLUdFROanhQOVh0NUhyOXNxRDdkc0tEZFE#gid=0" name="source" class="input span4" placeholder="URL to google spreadsheet" />
+                    <p class="help-block">The Timeliner uses data in a spreadsheet in Google docs allowing you to edit the timeline by editing the spreadsheet.</p>
                   </div>
                 </div>
               </fieldset>
@@ -73,6 +73,27 @@
                 <button type="submit" class="btn btn-primary">Load &raquo;</button>
               </div>
             </form>
+          </div>
+        </div>
+        <h1 style="text-align: center; margin: 30px;">~ Instructions ~</h1>
+        <div class="row">
+          <div class="span4">
+            <div class="well">
+              <h3>1. Create a Google Spreadsheet</h3>
+              <p>We suggest you copy <a href="https://docs.google.com/spreadsheet/ccc?key=0Aon3JiuouxLUdDlGV2lCakoydVh1U014cHRqcXpoWVE">this template</a> so that columns have the right names.</p>
+            </div>
+          </div>
+          <div class="span4">
+            <div class="well">
+              <h3>2. Publish it</h2>
+              <p>Publish your spreadsheet - see File menu -&gt; Publish to Web in Google Docs.</p>
+            </div>
+          </div>
+          <div class="span4">
+            <div class="well">
+              <h3>3. Connect it to Timeliner</h3>
+              <p>Paste the spreadsheet URL (e.g. ) into the form above and hit Load.</p>
+            </div>
           </div>
         </div>
       </div>

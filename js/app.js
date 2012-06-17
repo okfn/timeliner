@@ -95,12 +95,13 @@ var Timeliner = Backbone.View.extend({
     e.preventDefault();
     var $form = $(e.target);
     var source = $form.find('input[name="source"]').val();
-    var datasetInfo = {
-      id: 'my-dataset',
-      url: source
-    };
-    var dataset = new recline.Model.Dataset(datasetInfo, 'gdocs');
-    this.createExplorer(dataset);
+    window.location.search = '?backend=gdocs&url=' + source;
+//    var datasetInfo = {
+//      id: 'my-dataset',
+//      url: source
+//    };
+//    var dataset = new recline.Model.Dataset(datasetInfo, 'gdocs');
+//    this.createExplorer(dataset);
   }
 });
 
