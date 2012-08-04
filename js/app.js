@@ -74,6 +74,10 @@ var Timeliner = Backbone.View.extend({
     });
     this.dataExplorer.convertRecord = function(record, fields) {
       var out = this._convertRecord(record, fields);
+      if (!out) {
+        alert('Failed to extract date from: ' + JSON.stringify(record.toJSON()));
+        return null;
+      }
       if (record.get('image')) {
         out.asset = {
           media: record.get('image')
