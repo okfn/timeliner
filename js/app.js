@@ -73,7 +73,11 @@ var Timeliner = Backbone.View.extend({
       el: $el
     });
     this.dataExplorer.convertRecord = function(record, fields) {
-      var out = this._convertRecord(record, fields);
+      try {
+        var out = this._convertRecord(record, fields);
+      } catch (e) {
+        out = null;
+      }
       if (!out) {
         alert('Failed to extract date from: ' + JSON.stringify(record.toJSON()));
         return null;
@@ -85,7 +89,11 @@ var Timeliner = Backbone.View.extend({
       }
       out.text = record.get('description');
       if (record.get('source')) {
-        out.text += '<p style="font-style: italic">Source: ' + record.get('source') + '</em></p>';
+        var s = record.get('source');
+        if (record.get('sourceurl')) {
+          s = '<a href="' + record.get('sourceurl') + '">' + s + '</a>';
+        }
+        out.text += '<p class="source">Source: ' + s + '</p>';
       }
       // hacky but it will work ...
       // do not want time part of the dates
