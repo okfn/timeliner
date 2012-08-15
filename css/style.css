@@ -7,10 +7,6 @@ body {
   margin-left: 0;
 }
 
-.recline-grid-container {
-  height: 550px;
-}
-
 .recline-timeline .vmm-timeline {
   height: 550px;
 }
@@ -22,6 +18,26 @@ body {
 .page-home .row.instructions .span4 .well {
   height: 100px;
 }
+
+/**************************************************************
+  * Data Views
+  *************************************************************/
+
+.data-views .timeline {
+  width: 49%;
+  float: left;
+}
+
+.data-views .map {
+  margin-left: 50%;
+  width: 49.5%;
+}
+
+.data-views .recline-map .map {
+  height: 550px;
+}
+
+
 
 /**************************************************************
   * Timeline tweaks
