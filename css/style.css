@@ -23,14 +23,8 @@ body {
   * Data Views
   *************************************************************/
 
-.data-views .timeline {
-  width: 49%;
-  float: left;
-}
-
-.data-views .map {
-  margin-left: 50%;
-  width: 49.5%;
+.data-view .recline-map {
+  margin-left: 10px;
 }
 
 .data-views .recline-map .map {
