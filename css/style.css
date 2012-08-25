@@ -7,10 +7,6 @@ body {
   margin-left: 0;
 }
 
-.recline-timeline .vmm-timeline {
-  height: 550px;
-}
-
 .vmm-timeline p {
   font-size: 12px;
 }
@@ -27,10 +23,9 @@ body {
   margin-left: 10px;
 }
 
-.data-views .recline-map .map {
-  height: 550px;
+.recline-timeline .vmm-timeline, .data-views .recline-map .map {
+  height: 600px;
 }
-
 
 
 /**************************************************************
