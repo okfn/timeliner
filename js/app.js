@@ -12,7 +12,6 @@ var Timeliner = Backbone.View.extend({
   initialize: function() {
     this.el = $(this.el);
     this.timeline = null;
-    this.explorerDiv = $('.data-views');
     _.bindAll(this, 'viewExplorer', 'viewHome');
 
     this.router = new Backbone.Router();
@@ -104,7 +103,7 @@ var Timeliner = Backbone.View.extend({
     this.map = new recline.View.Map({
       model: dataset
     });
-    this.explorerDiv.append(this.map.el);
+    $('.data-views .map').append(this.map.el);
     this.map.render();
 
     // show the view
