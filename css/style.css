@@ -15,6 +15,21 @@ body {
   height: 100px;
 }
 
+.okfn-ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10000;
+}
+
+#okf-panel {
+  z-index: 10000;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+}
+
 /**************************************************************
   * Data Views
   *************************************************************/

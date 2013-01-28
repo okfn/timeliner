@@ -9,7 +9,7 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <link rel="stylesheet" href="vendor/recline/vendor/bootstrap/2.0.2/css/bootstrap.css">
+  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
   <link rel="stylesheet" href="vendor/recline/vendor/leaflet/0.3.1/leaflet.css">
   <!--[if lte IE 8]>
   <link rel="stylesheet" href="vendor/recline/vendor/leaflet/0.3.1/leaflet.ie.css" />
@@ -20,10 +20,11 @@
   <link rel="stylesheet" href="vendor/recline/dist/recline.css">
   <!-- /Recline CSS components -->
 
+  <!-- okf ribbon -->
+  <link rel="stylesheet" href="http://assets.okfn.org/themes/okfn/okf-panel.css"/>
+
   <!-- Custom CSS for the Timeliner Online App -->
   <link rel="stylesheet" href="css/style.css">
-
-  <link rel="stylesheet" href="vendor/recline/vendor/bootstrap/2.0.2/css/bootstrap-responsive.css">
 
   <!-- 3rd party JS libraries -->
   <script type="text/javascript" src="vendor/recline/vendor/jquery/1.7.1/jquery.js"></script>
@@ -41,14 +42,18 @@
   <script type="text/javascript" src="js/app.js"></script>
 </head>
 <body>
+<div id="okf-panel" class="collapse">
+  <iframe src="http://assets.okfn.org/themes/okfn/okf-panel.html"></iframe>
+</div>
+<div class="okfn-ribbon">
+  <a data-toggle="collapse" data-target="#okf-panel">An Open Knowledge Foundation Site</a>
+</div>
 <div class="recline-app">
-  <div class="navbar navbar-fixed-top">
+  <div class="navbar navbar-fixed-top navbar-inverse">
     <div class="navbar-inner">
       <div class="container-fluid">
         <a class="brand" href="#">Recline Timeliner</a>
         <ul class="nav pull-right">
-          <li><a href="http://reclinejs.com/">ReclineJS</a>
-          <li><a href="https://github.com/okfn/timeliner">Source</a></li>
         </ul>
       </div>
     </div>
@@ -58,7 +63,7 @@
     <div class="content">
 
       <div class="page-home backbone-page">
-        <div class="row">
+        <div class="row-fluid">
           <div class="span6 offset3">
             <form class="js-load-url form-horizontal">
               <fieldset>
@@ -66,7 +71,7 @@
                 <div class="control-group">
                   <label for="source" class="control-label">Google Spreadsheet URL</label>
                   <div class="controls">
-                    <input type="text" value="https://docs.google.com/spreadsheet/ccc?key=0Aon3JiuouxLUdFROanhQOVh0NUhyOXNxRDdkc0tEZFE#gid=0" name="source" class="input span4" placeholder="URL to google spreadsheet" />
+                    <input type="text" value="https://docs.google.com/spreadsheet/ccc?key=0Aon3JiuouxLUdFROanhQOVh0NUhyOXNxRDdkc0tEZFE#gid=0" name="source" class="input span12" placeholder="URL to google spreadsheet" />
                     <p class="help-block">The Timeliner uses data in a spreadsheet in Google docs allowing you to edit the timeline by editing the spreadsheet.</p>
                   </div>
                 </div>
@@ -78,7 +83,7 @@
           </div>
         </div>
         <h1 style="text-align: center; margin: 30px;">~ Instructions ~</h1>
-        <div class="row instructions">
+        <div class="row-fluid instructions">
           <div class="span4">
             <div class="well">
               <h3>1. Create a Google Spreadsheet</h3>
@@ -98,13 +103,19 @@
             </div>
           </div>
         </div>
+
+        <h1 style="text-align: center; margin: 30px;">~ Credits ~</h1>
+        <p style="width: 500px; margin: auto;">
+        Timeliner is only possible thanks to a set of awesome open-source components including <a href="http://timelinejs.org/">TimelineJS</a>, <a href="http://reclinejs.com/">ReclineJS</a>, <a href="http://leafletjs.com/">Leaflet</a>, <a href="http://backbonejs.org/">Backbone</a> and <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>. You can find the <a href="https://github.com/okfn/timeliner">full open-source source for Timeliner on GitHub here</a>.
+        </p>
       </div>
 
       <div class="page-explorer backbone-page">
         <div class="data-views">
-          <div class="row">
+          <div class="row-fluid">
             <div class="span8">
               <div class="timeline"></div>
+              &nbsp;
             </div>
             <div class="span4">
               <div class="map"></div>
