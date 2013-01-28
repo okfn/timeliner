@@ -1,5 +1,12 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700);
+
 body {
   padding-top: 60px;
+  font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6, body, p, input, button, select, textarea {
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
 /* we do not have a LH sidebar */
