@@ -20,6 +20,9 @@
   <link rel="stylesheet" href="vendor/recline/dist/recline.css">
   <!-- /Recline CSS components -->
 
+  <!-- okf ribbon -->
+  <link rel="stylesheet" href="http://assets.okfn.org/themes/okfn/okf-panel.css"/>
+
   <!-- Custom CSS for the Timeliner Online App -->
   <link rel="stylesheet" href="css/style.css">
 
@@ -39,6 +42,12 @@
   <script type="text/javascript" src="js/app.js"></script>
 </head>
 <body>
+<div id="okf-panel" class="collapse">
+  <iframe src="http://assets.okfn.org/themes/okfn/okf-panel.html"></iframe>
+</div>
+<div class="okfn-ribbon">
+  <a data-toggle="collapse" data-target="#okf-panel">An Open Knowledge Foundation Site</a>
+</div>
 <div class="recline-app">
   <div class="navbar navbar-fixed-top navbar-inverse">
     <div class="navbar-inner">
