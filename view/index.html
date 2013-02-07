@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Open Knowledge Foundation Timeliner - Make Timelines and TimeMaps fast!</title>
+  <meta name="description" content="The Recline Timeliner">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../vendor/recline/vendor/leaflet/0.3.1/leaflet.css">
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="../vendor/recline/vendor/leaflet/0.3.1/leaflet.ie.css" />
+  <![endif]-->
+  <link rel="stylesheet" href="../vendor/recline/vendor/timeline/20120520/css/timeline.css">
+
+  <!-- Recline CSS components -->
+  <link rel="stylesheet" href="../vendor/recline/dist/recline.css">
+  <!-- /Recline CSS components -->
+
+  <!-- okf ribbon -->
+  <link rel="stylesheet" href="http://assets.okfn.org/themes/okfn/okf-panel.css"/>
+
+  <!-- Custom CSS for the Timeliner Online App -->
+  <link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+<div id="okf-panel" class="collapse">
+  <iframe src="http://assets.okfn.org/themes/okfn/okf-panel.html"></iframe>
+</div>
+<div class="okfn-ribbon">
+  <a data-toggle="collapse" data-target="#okf-panel">An Open Knowledge Foundation Site</a>
+</div>
+
+<div class="container">
+<div class="content">
+  <div class="page view">
+    <div class="page-header">
+      <h1>
+        Timeliner
+        <small>
+          Make elegant timelines and timemaps using Google Spreadsheets
+        </small>
+      </h1>
+    </div>
+
+    <div class="page-explorer backbone-page">
+      <div class="data-views">
+        <div class="row-fluid">
+          <div class="span8">
+            <div class="timeline"></div>
+            &nbsp;
+          </div>
+          <div class="span4">
+            <div class="map"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div> <!-- /content -->
+</div> <!-- / container-fluid -->
+</div>
+  <!-- 3rd party JS libraries -->
+  <script type="text/javascript" src="../vendor/recline/vendor/jquery/1.7.1/jquery.js"></script>
+  <script type="text/javascript" src="../vendor/recline/vendor/underscore/1.1.6/underscore.js"></script>
+  <script type="text/javascript" src="../vendor/recline/vendor/backbone/0.5.1/backbone.js"></script>
+  <script type="text/javascript" src="../vendor/recline/vendor/moment/1.6.2/moment.js"></script>
+  <script type="text/javascript" src="../vendor/recline/vendor/mustache/0.5.0-dev/mustache.js"></script>
+  <script type="text/javascript" src="../vendor/recline/vendor/bootstrap/2.0.2/bootstrap.js"></script>
+  <script type="text/javascript" src="../vendor/recline/vendor/leaflet/0.3.1/leaflet.js"></script>
+  <script type="text/javascript" src="../vendor/recline/vendor/timeline/20120520/js/timeline.js"></script>
+
+  <script type="text/javascript" src="../vendor/recline/dist/recline.js"></script>
+
+  <!-- non-library javascript specific to this demo -->
+  <script type="text/javascript" src="../js/view.js"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33874954-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</body>
+</html>
+
