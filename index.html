@@ -9,7 +9,7 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
   <link rel="stylesheet" href="vendor/recline/vendor/leaflet/0.3.1/leaflet.css">
   <!--[if lte IE 8]>
   <link rel="stylesheet" href="vendor/recline/vendor/leaflet/0.3.1/leaflet.ie.css" />
@@ -34,21 +34,18 @@
 <div class="okfn-ribbon">
   <a data-toggle="collapse" data-target="#okf-panel">An Open Knowledge Foundation Site</a>
 </div>
-<div class="recline-app">
-  <div class="navbar navbar-fixed-top navbar-inverse">
-    <div class="navbar-inner">
-      <div class="container-fluid">
-        <a class="brand" href="#">Recline Timeliner - make elegant timelines and timemaps in seconds</a>
-        <ul class="nav pull-right" style="margin-right: 30px;">
-          <li><a href="#credits">Credits</a></li>
-        </ul>
-      </div>
+
+<div class="container">
+<div class="content">
+  <div class="page home">
+    <div class="page-header">
+      <h1>
+        OKF Timeliner
+        <small>
+          Make elegant timelines and timemaps using Google Spreadsheets
+        </small>
+      </h1>
     </div>
-  </div>
-
-  <div class="container-fluid">
-    <div class="content">
-
       <div class="page-home backbone-page">
         <div class="row-fluid">
           <div class="span6 offset3">
@@ -73,13 +70,13 @@
         <div class="row-fluid instructions">
           <div class="span4">
             <div class="well">
-              <h3>1. Store Data in a Google Spreadsheet</h3>
+              <h3>Put Data in a Google Spreadsheet</h3>
               <p>We suggest you copy <a href="https://docs.google.com/spreadsheet/ccc?key=0Aon3JiuouxLUdDlGV2lCakoydVh1U014cHRqcXpoWVE">this template</a> so that columns have the right names.</p>
             </div>
           </div>
           <div class="span4">
             <div class="well">
-              <h3>2. Publish it</h2>
+              <h3>Publish the Spreadsheet</h2>
               <p>Publish your spreadsheet - see File menu -&gt; Publish to Web in Google Docs.</p>
             </div>
           </div>
@@ -130,7 +127,6 @@
   <script type="text/javascript" src="js/app.js"></script>
 
 <script type="text/javascript">
-
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-33874954-2']);
   _gaq.push(['_trackPageview']);
@@ -140,7 +136,6 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
 </script>
 </body>
 </html>
