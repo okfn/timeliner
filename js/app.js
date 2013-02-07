@@ -4,7 +4,10 @@ jQuery(function($) {
     var $form = $(e.target);
     var source = $form.find('input[name="source"]').val();
     var path = window.location.href.replace('/index.html', '');
-    path +=  '/view/?backend=gdocs&url=' + source;
+    if (path[path.length - 1] != '/') {
+      path += '/';
+    }
+    path +=  'view/?backend=gdocs&url=' + source;
     window.location.href = path;
   });
 });
