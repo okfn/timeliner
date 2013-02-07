@@ -3,11 +3,21 @@ jQuery(function($) {
     e.preventDefault();
     var $form = $(e.target);
     var source = $form.find('input[name="source"]').val();
-    var path = document.location.href.replace('/index.html', '');
+    var path = window.location.href.replace('/index.html', '');
     path +=  '/view/?backend=gdocs&url=' + source;
-    document.location.href = path;
+    window.location.href = path;
   });
 });
 
-// TODO: redirect for old view setup ...
+// Backwards compatability (pre Feb 2013)
+// Redirect from old timeliner urls to new ones
+if (window.location.search) {
+  var path = window.location.href.replace(/\/index.html/, '');
+  path = path.replace(/\?.*/g, '');
+  console.log(path);
+  console.log(window.location.search);
+  path +=  '/view/' + window.location.search;
+  console.log(path);
+  window.location.href = path;
+}
 
