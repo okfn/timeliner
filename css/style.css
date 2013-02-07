@@ -22,9 +22,9 @@ body {
 
 footer {
   background-color: #f5f5f5;
-  padding: 20px 20px 20px;
-  margin: 15px -20px -20px;
+  padding: 10px 10px;
   border-top: solid 1px #eee;
+  font-size: 90%;
 }
 
 
@@ -64,12 +64,25 @@ h1, h2, h3, h4, h5, h6, body, p, input, button, select, textarea {
   * Data Views
   *************************************************************/
 
-.data-view .recline-map {
-  margin-left: 10px;
+.data-views .recline-map {
+  margin-left: 0px;
+}
+
+.data-views .span4 {
+  margin-left: 1%;
 }
 
 .recline-timeline .vmm-timeline, .data-views .recline-map .map {
   height: 600px;
+}
+
+/* get attribution on one line ... */
+.leaflet-container .leaflet-control-attribution {
+  font-size: 9px;
+}
+
+.leaflet-control-attribution img {
+  display: none;
 }
 
 
