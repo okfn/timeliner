@@ -10,10 +10,13 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../vendor/recline/vendor/leaflet/0.3.1/leaflet.css">
+  <link rel="stylesheet" href="../vendor/recline/vendor/leaflet/0.4.4/leaflet.css">
   <!--[if lte IE 8]>
-  <link rel="stylesheet" href="../vendor/recline/vendor/leaflet/0.3.1/leaflet.ie.css" />
+  <link rel="stylesheet" href="../vendor/recline/vendor/leaflet/0.4.4/leaflet.ie.css" />
   <![endif]-->
+  <link rel="stylesheet" href="../vendor/recline/vendor/leaflet.markercluster/MarkerCluster.css">
+  <link rel="stylesheet" href="../vendor/recline/vendor/leaflet.markercluster/MarkerCluster.Default.css">
+
   <link rel="stylesheet" href="../vendor/recline/vendor/timeline/20120520/css/timeline.css">
 
   <!-- Recline CSS components -->
@@ -34,44 +37,32 @@
 <div class="okfn-ribbon">
   <a data-toggle="collapse" data-target="#okf-panel">An Open Knowledge Foundation Site</a>
 </div>
-
-<div class="container">
 <div class="content">
-  <div class="page view">
-    <div class="page-header">
-      <h1>
-        Timeliner
-        <small>
-          Make elegant timelines and timemaps using Google Spreadsheets
-        </small>
-      </h1>
-    </div>
-
-    <div class="page-explorer backbone-page">
-      <div class="data-views">
-        <div class="row-fluid">
-          <div class="span8">
-            <div class="timeline"></div>
-            &nbsp;
-          </div>
-          <div class="span4">
-            <div class="map"></div>
-          </div>
+  <div class="page-explorer">
+    <div class="data-views">
+      <div class="row-fluid">
+        <div class="span8">
+          <div class="timeline"></div>
+          &nbsp;
+        </div>
+        <div class="span4">
+          <div class="map"></div>
         </div>
       </div>
     </div>
-
+  </div>
 </div> <!-- /content -->
-</div> <!-- / container-fluid -->
 </div>
   <!-- 3rd party JS libraries -->
   <script type="text/javascript" src="../vendor/recline/vendor/jquery/1.7.1/jquery.js"></script>
-  <script type="text/javascript" src="../vendor/recline/vendor/underscore/1.1.6/underscore.js"></script>
-  <script type="text/javascript" src="../vendor/recline/vendor/backbone/0.5.1/backbone.js"></script>
+  <script type="text/javascript" src="../vendor/recline/vendor/underscore/1.4.2/underscore.js"></script>
+  <script type="text/javascript" src="../vendor/recline/vendor/underscore.deferred/0.4.0/underscore.deferred.js"></script>
+  <script type="text/javascript" src="../vendor/recline/vendor/backbone/0.9.2/backbone.js"></script>
   <script type="text/javascript" src="../vendor/recline/vendor/moment/1.6.2/moment.js"></script>
   <script type="text/javascript" src="../vendor/recline/vendor/mustache/0.5.0-dev/mustache.js"></script>
   <script type="text/javascript" src="../vendor/recline/vendor/bootstrap/2.0.2/bootstrap.js"></script>
-  <script type="text/javascript" src="../vendor/recline/vendor/leaflet/0.3.1/leaflet.js"></script>
+  <script type="text/javascript" src="../vendor/recline/vendor/leaflet/0.4.4/leaflet.js"></script>
+  <script type="text/javascript" src="../vendor/recline/vendor/leaflet.markercluster/leaflet.markercluster.js"></script>
   <script type="text/javascript" src="../vendor/recline/vendor/timeline/20120520/js/timeline.js"></script>
 
   <script type="text/javascript" src="../vendor/recline/dist/recline.js"></script>
