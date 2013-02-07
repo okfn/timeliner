@@ -14,10 +14,10 @@ jQuery(function($) {
 if (window.location.search) {
   var path = window.location.href.replace(/\/index.html/, '');
   path = path.replace(/\?.*/g, '');
-  console.log(path);
-  console.log(window.location.search);
-  path +=  '/view/' + window.location.search;
-  console.log(path);
+  if (path[path.length - 1] != '/') {
+    path += '/';
+  }
+  path +=  'view/' + window.location.search;
   window.location.href = path;
 }
 
