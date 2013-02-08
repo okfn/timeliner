@@ -9,7 +9,6 @@ jQuery(function($) {
     });
   }
   var dataset = new recline.Model.Dataset(state);
-  console.log(dataset.get('url'));
   createTimeliner(dataset);
 });
 
@@ -31,6 +30,12 @@ jQuery(function($) {
     });
     this.timeline.render();
     this.timeline.convertRecord = function(record, fields) {
+      if (record.attributes.start[0] == "'") {
+        record.attributes.start = record.attributes.start.slice(1);
+      }
+      if (record.attributes.end[0] == "'") {
+        record.attributes.end = record.attributes.end.slice(1);
+      }
       try {
         var out = this._convertRecord(record, fields);
       } catch (e) {
