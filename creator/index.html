@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Timeline Creator - Timeliner - Make Timelines and TimeMaps fast! - Open Knowledge Foundation </title>
+  <meta name="description" content="The Recline Timeliner - make Timelines and TimeMaps quickly and easily">
+  <meta name="author" content="Open Knowledge Foundation Labs">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet" />
+</head>
+<body class="creator">
+<div class="container"><div class="content">
+  <div class="page-header">
+    <h1>A little help with creating timelines ...</h1>
+  </div>
+  <div class="form" style="margin-bottom: 10px;">
+    <a class="btn btn-danger js-remove-all" href="#" style="float: right;">Remove All</a>
+    <input type="search" class="span4 wp-search" placeholder="Search wikipedia for items for your timeline" autocomplete="off" />
+    <br />
+    <a class="js-download-all btn" target="_blank" href="#" download="timeliner-items.csv">Download to CSV</a>
+  </div>
+
+  <div class="loading" style="display: none;">
+    <p>
+      Loading data <img src="http://assets.okfn.org/images/icons/ajaxload-circle.gif" alt="loading" />
+    </p>
+  </div>
+
+  <div class="results" style="display: none;">
+    <div class="summary well">
+      <img src="" class="thumbnail" style="float: right;" />
+      <h4>
+        <span class="title"></span>
+      </h4>
+      <p>
+        Type: <span class="type"></span>
+        <br />
+        Location: <span class="place"></span>
+        <br />
+        Dates: <span class="start"></span> &mdash; <span class="end"></span>
+      </p>
+      <p class="summary"></p>
+      <div style="clear: both;"></div>
+    </div>
+  </div>
+
+  <div class="selected">
+  </div>
+
+</div></div> <!-- /content / container -->
+
+<!-- 3rd party JS libraries -->
+<script type="text/javascript" src="../vendor/recline/vendor/jquery/1.7.1/jquery.js"></script>
+<script type="text/javascript" src="../vendor/recline/vendor/underscore/1.4.2/underscore.js"></script>
+<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+<script src="https://raw.github.com/okfn/wikipediajs/master/wikipedia.js"></script>
+
+<script src="../js/creator.js"></script>
+</body>
+</html>
