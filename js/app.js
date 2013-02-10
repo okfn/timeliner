@@ -7,7 +7,7 @@ jQuery(function($) {
     if (path[path.length - 1] != '/') {
       path += '/';
     }
-    path +=  'view/?backend=gdocs&url=' + source;
+    path +=  'view/?url=' + encodeURIComponent(source);
     window.location.href = path;
   });
 });

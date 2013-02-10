@@ -8,6 +8,7 @@ jQuery(function($) {
       state[key] = value;
     });
   }
+  state.backend = 'gdocs';
   var dataset = new recline.Model.Dataset(state);
   createTimeliner(dataset);
 });
