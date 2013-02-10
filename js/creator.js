@@ -71,7 +71,27 @@ function renderList() {
 };
 
 function setDownloadData() {
-  $('.js-download-all').attr('href', 'data:text/csv,xyz,abc');
+  var fields = [ 'Title', 'Start', 'End', 'Image', 'Place', 'Location', 'Description'];
+  var out = [];
+  out.push(fields);
+  $.each(myList, function(idx, item) {
+    var row = $.map(fields, function(field) {
+      if (field == 'Description') {
+        field = 'summary';
+      }
+      if (field == 'Location') {
+        // TODO: sort this out
+        return '';
+      } else {
+        var out = item.summary[field.toLowerCase()];
+        return out ? out : '';
+      }
+    });
+    out.push(row);
+  });
+  var csv = recline.Backend.CSV.serializeCSV(out);
+  csv = encodeURIComponent(csv);
+  $('.js-download-all').attr('href', 'data:text/csv;charset=utf8,' + csv);
 }
 
 function renderItem(info) {
