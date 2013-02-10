@@ -15,22 +15,15 @@ jQuery(function($) {
 
 var createTimeliner = function(dataset) {
   var self = this;
-  // remove existing data explorer view
-  var reload = false;
-  if (this.timeline) {
-    this.timeline.remove();
-    reload = true;
-  }
-  this.timeline = null;
   var $el = $('.data-views .timeline');
   // explicitly set width as otherwise Timeline does extends a bit too far (seems to use window width rather than width of actual div)
   // $el.width((this.el.width() - 45)/2.0);
-  this.timeline = new recline.View.Timeline({
+  var timeline = new recline.View.Timeline({
     model: dataset,
     el: $el
   });
-  this.timeline.render();
-  this.timeline.convertRecord = function(record, fields) {
+  timeline.render();
+  timeline.convertRecord = function(record, fields) {
     if (record.attributes.start[0] == "'") {
       record.attributes.start = record.attributes.start.slice(1);
     }
@@ -72,6 +65,11 @@ var createTimeliner = function(dataset) {
   this.map.render();
 
   // load the data
-  dataset.fetch();
+  dataset.fetch()
+    .done(function() {
+      var title = dataset.get('spreadsheetTitle');
+      $('.navbar .brand').text(title);
+      document.title = title + ' ' + document.title;
+    });
 }
 

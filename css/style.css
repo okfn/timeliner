@@ -64,6 +64,10 @@ h1, h2, h3, h4, h5, h6, body, p, input, button, select, textarea {
   * Data Views
   *************************************************************/
 
+body.view .navbar {
+  margin-bottom: 0px; 
+}
+
 .data-views .recline-map {
   margin-left: 0px;
 }
