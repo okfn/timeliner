@@ -9,8 +9,19 @@ jQuery(function($) {
     });
   }
   state.backend = 'gdocs';
+  if (state.embed!=undefined) {
+    $('body').addClass('embed');
+  }
   var dataset = new recline.Model.Dataset(state);
   createTimeliner(dataset);
+
+  $('.js-embed').on('click', function(e) {
+    e.preventDefault();
+    var url = window.location.href + '&embed=1';
+    var val = '<iframe src="' + url + '" noframeborder="true" width="100%" height="780;"></iframe>';
+    $('.embed-modal textarea').val(val);
+    $('.embed-modal').modal();  
+  });
 });
 
 var createTimeliner = function(dataset) {
