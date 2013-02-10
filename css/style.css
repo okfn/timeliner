@@ -68,6 +68,10 @@ body.view .navbar {
   margin-bottom: 0px; 
 }
 
+body.view li.tweet {
+  margin-top: 10px;
+}
+
 .data-views .recline-map {
   margin-left: 0px;
 }
