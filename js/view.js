@@ -18,7 +18,7 @@ jQuery(function($) {
   $('.js-embed').on('click', function(e) {
     e.preventDefault();
     var url = window.location.href + '&embed=1';
-    var val = '<iframe src="' + url + '" noframeborder="true" width="100%" height="780;"></iframe>';
+    var val = '<iframe src="' + url + '" frameborder="0" style="border: none;" width="100%" height="780;"></iframe>';
     $('.embed-modal textarea').val(val);
     $('.embed-modal').modal();  
   });
