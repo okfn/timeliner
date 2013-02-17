@@ -27,7 +27,6 @@ footer {
   font-size: 90%;
 }
 
-
 h1, h2, h3, h4, h5, h6, body, p, input, button, select, textarea {
 	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
@@ -41,7 +40,7 @@ h1, h2, h3, h4, h5, h6, body, p, input, button, select, textarea {
   font-size: 12px;
 }
 
-.page-home .row.instructions .span4 .well {
+body.home .row.instructions .span4 .well {
   height: 100px;
 }
 
@@ -58,6 +57,14 @@ h1, h2, h3, h4, h5, h6, body, p, input, button, select, textarea {
   position: absolute;
   width: 100%;
   overflow: hidden;
+}
+
+body.home footer {
+  margin: 20px -20px -20px;
+}
+
+body.home .content {
+  margin-bottom: 20px;
 }
 
 /**************************************************************

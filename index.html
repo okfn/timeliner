@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Open Knowledge Foundation Timeliner - Make Timelines and TimeMaps fast!</title>
-  <meta name="description" content="The Recline Timeliner">
+  <title>Timeliner - Make Timelines and TimeMaps fast! - from the Open Knowledge Foundation Labs</title>
+  <meta name="description" content="Timeliner - Make Timelines and TimeMaps fast! - from the Open Knowledge Foundation Labs" />
 
   <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
   <!--[if lt IE 9]>
@@ -16,14 +16,13 @@
 
   <!-- Custom CSS for the Timeliner Online App -->
   <link rel="stylesheet" href="css/style.css">
-
 </head>
-<body>
+<body class="home">
 <div id="okf-panel" class="collapse">
   <iframe src="http://assets.okfn.org/themes/okfn/okf-panel.html"></iframe>
 </div>
 <div class="okfn-ribbon">
-  <a data-toggle="collapse" data-target="#okf-panel">An Open Knowledge Foundation Site</a>
+  <a data-toggle="collapse" data-target="#okf-panel" href="http://okfnlabs.org/" target="_blank">An Open Knowledge Foundation Labs Project</a>
 </div>
 
 <div class="container">
@@ -37,16 +36,16 @@
         </small>
       </h1>
     </div>
-      <div class="page-home backbone-page">
+      <div class="">
         <div class="row-fluid">
           <div class="span6 offset3">
             <form class="js-load-url form-horizontal">
               <fieldset>
-                <legend>Connect to Google Spreadsheet</legend>
+                <legend>Connect Your Google Spreadsheet</legend>
                 <div class="control-group">
                   <label for="source" class="control-label">Google Spreadsheet URL</label>
                   <div class="controls">
-                    <input type="text" value="https://docs.google.com/spreadsheet/ccc?key=0Aon3JiuouxLUdFROanhQOVh0NUhyOXNxRDdkc0tEZFE#gid=0" name="source" class="input span12" placeholder="URL to google spreadsheet" />
+                    <input type="text" value="" name="source" class="input span12" placeholder="URL to google spreadsheet" />
                     <p class="help-block">The Timeliner uses data in a spreadsheet in Google docs allowing you to edit the timeline by editing the spreadsheet.</p>
                   </div>
                 </div>
@@ -56,37 +55,46 @@
               </div>
             </form>
           </div>
+          <div class="span3">
+            <h3>Examples</h3>
+            <a href="view/?url=https://docs.google.com/spreadsheet/ccc?key=0Aon3JiuouxLUdFROanhQOVh0NUhyOXNxRDdkc0tEZFE">Wars in History</a>
+          </div>
         </div>
-        <h1 style="text-align: center; margin: 30px;">~ Instructions ~</h1>
+        <h1 style="text-align: center; margin: 30px;">How It Works</h1>
         <div class="row-fluid instructions">
           <div class="span4">
             <div class="well">
-              <h3>Put Data in a Google Spreadsheet</h3>
+              <h3>Create a Spreadsheet</h3>
               <p>We suggest you copy <a href="https://docs.google.com/spreadsheet/ccc?key=0Aon3JiuouxLUdDlGV2lCakoydVh1U014cHRqcXpoWVE">this template</a> so that columns have the right names.</p>
             </div>
           </div>
           <div class="span4">
             <div class="well">
               <h3>Publish the Spreadsheet</h2>
-              <p>Publish your spreadsheet - see File menu -&gt; Publish to Web in Google Docs.</p>
+              <p>Publish your spreadsheet - see File menu &rarr; Publish to Web in Google Docs.</p>
             </div>
           </div>
           <div class="span4">
             <div class="well">
-              <h3>3. Connect it to Timeliner</h3>
+              <h3>Connect it to Timeliner</h3>
               <p>Paste the spreadsheet URL (e.g. ) into the form above and hit Load.</p>
             </div>
           </div>
         </div>
 
-        <h1 style="text-align: center; margin: 30px;" id="credits">~ Credits ~</h1>
+        <h1 style="text-align: center; margin: 30px 0;" id="credits">Credits</h1>
         <p style="width: 500px; margin: auto;">
         Timeliner is only possible thanks to a set of awesome open-source components including <a href="http://timelinejs.org/">TimelineJS</a>, <a href="http://okfnlabs.org/recline/">ReclineJS</a>, <a href="http://leafletjs.com/">Leaflet</a>, <a href="http://backbonejs.org/">Backbone</a> and <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>. You can find the <a href="https://github.com/okfn/timeliner">full open-source source for Timeliner on GitHub here</a>.
         </p>
       </div>
-  </div> <!-- /content -->
+    <footer>
+    The <a href="http://timeliner.okfnlabs.org/"><strong>Timeliner </strong></a> is an <a href="http://okfnlabs.org/">Open Knowledge Foundation Labs</a> project &ndash; <a href="https://github.com/okfn/timeliner">Source Code</a>.
+    Timeliner is An open-source project &ndash; 
+    <a href="https://github.com/okfn/timeliner#copyright-and-license">Copyright &amp; License</a>.
+    </footer>
+  </div>
+</div> <!-- /content -->
 </div> <!-- / container-fluid -->
-</div>
   <!-- 3rd party JS libraries -->
   <script type="text/javascript" src="vendor/recline/vendor/jquery/1.7.1/jquery.js"></script>
 
