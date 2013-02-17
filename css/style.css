@@ -72,6 +72,21 @@ body.view li.tweet {
   margin-top: 10px;
 }
 
+body.view .controls {
+  position: absolute;
+  left: 0;
+  z-index: 1000;
+  padding-top: 2px;
+}
+
+body.view .controls .toolbox {
+  margin-left: -2px;
+}
+
+body.view .controls .toolbox.hideme input {
+  display: none;
+}
+
 .data-views .recline-map {
   margin-left: 0px;
 }

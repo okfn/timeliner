@@ -29,6 +29,26 @@ jQuery(function($) {
 });
 
 var TimelinerView = Backbone.View.extend({
+  events: {
+    'click .controls .js-show-toolbox': '_onShowToolbox',
+    'submit .toolbox form': '_onSearch'
+  },
+
+  _onShowToolbox: function(e) {
+    e.preventDefault();
+    if (this.$el.find('.toolbox').hasClass('hideme')) {
+      this.$el.find('.toolbox').removeClass('hideme');
+    } else {
+      this.$el.find('.toolbox').addClass('hideme');
+    }
+  },
+
+  _onSearch: function(e) {
+    e.preventDefault();
+    var query = this.$el.find('.text-query input').val();
+    this.model.query({q: query});
+  },
+
   render: function() {
     var self = this;
     // explicitly set width as otherwise Timeline does extends a bit too far (seems to use window width rather than width of actual div)
