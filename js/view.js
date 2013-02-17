@@ -91,12 +91,23 @@ var TimelinerView = Backbone.View.extend({
       out.startDate = String(out.startDate.getFullYear()) + ',' + String(out.startDate.getMonth()+1) + ',' + String(out.startDate.getDate());
       return out;
     }
-
     this.timeline.render();
+
     this.map = new recline.View.Map({
       model: this.model
     });
     this.$el.find('.map').append(this.map.el);
+    this.map.infobox = function(record) {
+      return record.get('title');
+    };
+    this.map.geoJsonLayerOptions.pointToLayer = function(feature, latlng) {
+      var marker = new L.Marker(latlng);
+      var record = this.model.records.getByCid(feature.properties.cid).toJSON();
+      marker.bindLabel(record.title);
+      // this is for cluster case
+      this.markers.addLayer(marker);
+      return marker;
+    };
     this.map.render();
 
     // load the data
