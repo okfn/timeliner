@@ -11,7 +11,13 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../vendor/recline/vendor/leaflet/0.4.4/leaflet.css">
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="../vendor/recline/vendor/leaflet/0.4.4/leaflet.ie.css" />
+  <![endif]-->
+
   <link href="../css/style.css" rel="stylesheet" />
+  <link href="../css/creator.css" rel="stylesheet" />
 </head>
 <body class="creator">
 <div class="container"><div class="content">
@@ -34,6 +40,13 @@
   <div class="selected">
   </div>
 
+  <footer>
+    The <a href="http://timeliner.okfnlabs.org/"><strong>Timeliner </strong></a> is a project of <a href="http://okfnlabs.org/">Open Knowledge Foundation</a> &ndash; <a href="https://github.com/okfn/timeliner">Source Code</a>.
+    Timeliner is open-source &ndash; 
+    <a href="https://github.com/okfn/timeliner#copyright-and-license">Copyright &amp; License</a>.
+  <br />
+  Map data &copy; 2011 <a href="http://openstreetmap.org/">OpenStreetMap</a> contributors, Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>.
+  </footer>
 </div></div> <!-- /content / container -->
 
 <!-- 3rd party JS libraries -->
@@ -43,6 +56,7 @@
 <script type="text/javascript" src="../vendor/backbone.localStorage.js"></script>
 <script type="text/javascript" src="../vendor/recline/src/backend.csv.js"></script>
 <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/recline/vendor/leaflet/0.4.4/leaflet.js"></script>
 <script src="https://raw.github.com/okfn/wikipediajs/master/wikipedia.js"></script>
 
 <script src="../js/creator.js"></script>

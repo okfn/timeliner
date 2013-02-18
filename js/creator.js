@@ -20,14 +20,6 @@ jQuery(function($) {
     },
     minLength: 3
   });
-
-  $('.js-remove-all').on('click', function(e) {
-    e.preventDefault();
-    myList = [];
-    save();
-    renderList();
-  });
-
 });
 
 function queryWPTitles(query, cb) {
@@ -56,20 +48,27 @@ var ItemList = Backbone.Collection.extend({
 
   addFromWP: function(item) {
     delete item.raw;
-    this.create(item);
+    item.summary.source = 'Wikipedia';
+    item.summary.source_url = 'http://en.wikipedia.org/wiki/' + item.dbpediaUrl.split('/')[5];
+    this.create(item.summary);
   }
 });
 
 var ItemListView = Backbone.View.extend({
   initialize: function() {
     var that = this;
-    this.collection.bind('add', function(e) {
-      that.onChange();
-    });
-    this.collection.bind('change', function(e) {
+    this.collection.bind('all', function(e) {
       that.onChange();
     });
     that.onChange();
+
+    $('.js-remove-all').on('click', function(e) {
+      e.preventDefault();
+      that.collection.each(function(item) {
+        item.destroy();
+      });
+      that.collection.reset([]);
+    });
   },
 
   onChange: function() {
@@ -82,7 +81,6 @@ var ItemListView = Backbone.View.extend({
     $('.selected').empty();
     this.collection.each(function(item) {
       var $el = that.renderItem(item.toJSON());
-      $('.selected').append($el);
     });
 
     return this;
@@ -92,13 +90,16 @@ var ItemListView = Backbone.View.extend({
     <div class="results"> \
       <div class="summary well"> \
         <img src="" class="thumbnail" style="float: right;" /> \
+        <div class="map"></div> \
         <h4> \
           <span class="title"></span> \
         </h4> \
         <p> \
           Type: <span class="type"></span> \
           <br /> \
-          Location: <span class="place"></span> \
+          Place: <span class="place"></span> \
+          <br /> \
+          Geolocation: <span class="geolocation"></span> <a href="#" class="js-edit-location" style="display: none;">Edit</a>  \
           <br /> \
           Dates: <span class="start"></span> &mdash; <span class="end"></span> \
         </p> \
@@ -110,17 +111,30 @@ var ItemListView = Backbone.View.extend({
 
   renderItem: function(info) {
     var $el = $(this.templateItem);
+    $('.selected').prepend($el);
 
-    var summaryInfo = info.summary;
-    for (key in summaryInfo) {
-      $el.find('.summary .' + key).text(summaryInfo[key]);
+    for (key in info) {
+      $el.find('.summary .' + key).text(info[key]);
     }
-    $el.find('.summary .thumbnail').attr('src', summaryInfo.image);
+    $el.find('.summary .thumbnail').attr('src', info.image);
+    $el.find('.geolocation').html('Unknown');
+    if (info.location && info.location.lat) {
+      var latlng = [info.location.lat, info.location.lon];
+      $el.find('.geolocation').html(JSON.stringify(latlng));
+      var $map = $el.find('.map')[0];
+      var map = L.map($map).setView(latlng, 9);
+
+      var mapUrl = "http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png";
+      var bg = new L.TileLayer(mapUrl, {maxZoom: 18, subdomains: '1234'});
+      map.addLayer(bg);
+
+      L.marker(latlng).addTo(map);
+    }
     return $el;
   },
 
   setDownloadData: function() {
-    var fields = [ 'Title', 'Start', 'End', 'Image', 'Place', 'Location', 'Description'];
+    var fields = [ 'Title', 'Start', 'End', 'Image', 'Place', 'Location', 'Description', 'Source', 'Source_URL'];
     var out = [];
     out.push(fields);
     this.collection.each(function(item) {
@@ -130,10 +144,13 @@ var ItemListView = Backbone.View.extend({
           field = 'summary';
         }
         if (field == 'Location') {
-          // TODO: sort this out
-          return '';
+          if (item.location.lat) {
+            return '' + item.location.lat + ',' + item.location.lon;
+          } else {
+            return ''
+          }
         } else {
-          var out = item.summary[field.toLowerCase()];
+          var out = item[field.toLowerCase()];
           return out ? out : '';
         }
       });
