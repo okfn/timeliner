@@ -105,13 +105,23 @@ var ItemListView = Backbone.View.extend({
         </p> \
         <p class="summary"></p> \
         <div style="clear: both;"></div> \
+        <button class="delete btn btn-danger">Delete</button> \
       </div> \
     </div> \
   ',
 
   renderItem: function(info) {
+    var that = this;
     var $el = $(this.templateItem);
     $('.selected').prepend($el);
+
+    var deleteButton = $el.find('.delete');
+    deleteButton.data('item-id', info['id']);
+    deleteButton.click(function(e) {
+      var itemId = $(this).data('item-id');
+      var item = that.collection.get(itemId);
+      item.destroy();
+    });
 
     for (key in info) {
       $el.find('.summary .' + key).text(info[key]);
