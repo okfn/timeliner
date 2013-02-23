@@ -75,7 +75,8 @@ var TimelinerView = Backbone.View.extend({
       }
       if (record.get('image')) {
         out.asset = {
-          media: record.get('image')
+          media: record.get('image'),
+	  thumbnail: record.get('icon')
         };
       }
       out.text = record.get('description');
@@ -97,13 +98,33 @@ var TimelinerView = Backbone.View.extend({
       model: this.model
     });
     this.$el.find('.map').append(this.map.el);
+
+    // customize with icon column
     this.map.infobox = function(record) {
+      if (record.icon!== undefined) {
+        return '<img src="' + record.get('icon') + '" width="100px"> ' +record.get('title');
+      }
       return record.get('title');
     };
+
     this.map.geoJsonLayerOptions.pointToLayer = function(feature, latlng) {
       var marker = new L.Marker(latlng);
       var record = this.model.records.getByCid(feature.properties.cid).toJSON();
       marker.bindLabel(record.title);
+
+      // customize with icon column
+      if (record.icon!== undefined) {
+	var eventIcon = L.icon({
+	    iconUrl: record.icon,
+	    iconSize:     [100, 20], // size of the icon
+	    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+	    shadowAnchor: [4, 62],  // the same for the shadow
+	    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+	});
+        marker.setIcon(eventIcon);
+      }
+
+      
       // this is for cluster case
       this.markers.addLayer(marker);
       return marker;
