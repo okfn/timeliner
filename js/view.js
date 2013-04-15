@@ -63,6 +63,13 @@ var TimelinerView = Backbone.View.extend({
       }
     });
 
+    // Timeline will sort the entries by timestamp, but we need the order to be the same for the map
+    this.model.records.comparator = function (a, b) {
+      var a = self.timeline._parseDate(a.get("start"));
+      var b = self.timeline._parseDate(b.get("start"));
+      return a - b;
+    }
+
     this.timeline.convertRecord = function(record, fields) {
       if (record.attributes.start[0] == "'") {
         record.attributes.start = record.attributes.start.slice(1);
@@ -114,24 +121,31 @@ var TimelinerView = Backbone.View.extend({
 
     this.map.geoJsonLayerOptions.pointToLayer = function(feature, latlng) {
       var marker = new L.Marker(latlng);
-      var record = this.model.records.getByCid(feature.properties.cid).toJSON();
-      marker.bindLabel(record.title);
+      var record = this.model.records.getByCid(feature.properties.cid);
+      var recordAttr = record.toJSON();
+      marker.bindLabel(recordAttr.title);
 
       // customize with icon column
-      if (record.icon!== undefined) {
-	var eventIcon = L.icon({
-	    iconUrl: record.icon,
-	    iconSize:     [100, 20], // size of the icon
-	    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-	    shadowAnchor: [4, 62],  // the same for the shadow
-	    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-	});
+      if (recordAttr.icon !== undefined) {
+        var eventIcon = L.icon({
+            iconUrl: recordAttr.icon,
+            iconSize:     [100, 20], // size of the icon
+            iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+            shadowAnchor: [4, 62],  // the same for the shadow
+            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+        });
         marker.setIcon(eventIcon);
       }
-
       
       // this is for cluster case
       this.markers.addLayer(marker);
+
+      // When a marker is clicked, update the fragment id, which will in turn update the timeline
+      marker.on("click", function (e) {
+        var i = _.indexOf(record.collection.models, record);
+        window.location.hash = "#" + i.toString();
+      });
+
       return marker;
     };
     this.map.render();
