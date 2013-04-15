@@ -55,8 +55,14 @@ var TimelinerView = Backbone.View.extend({
     // $el.width((this.el.width() - 45)/2.0);
     this.timeline = new recline.View.Timeline({
       model: this.model,
-      el: this.$el.find('.timeline')
+      el: this.$el.find('.timeline'),
+      state: {
+        timelineJSOptions: {
+          "hash_bookmark": true
+        }
+      }
     });
+
     this.timeline.convertRecord = function(record, fields) {
       if (record.attributes.start[0] == "'") {
         record.attributes.start = record.attributes.start.slice(1);
@@ -92,7 +98,6 @@ var TimelinerView = Backbone.View.extend({
       out.startDate = String(out.startDate.getFullYear()) + ',' + String(out.startDate.getMonth()+1) + ',' + String(out.startDate.getDate());
       return out;
     }
-    this.timeline.render();
 
     this.map = new recline.View.Map({
       model: this.model
@@ -134,6 +139,9 @@ var TimelinerView = Backbone.View.extend({
     // load the data
     this.model.fetch()
       .done(function() {
+        // We postpone rendering until now, because otherwise timeline might try to navigate to a non-existent marker
+        self.timeline.render();
+
         var title = self.model.get('spreadsheetTitle');
         $('.navbar .brand').text(title);
         document.title = title + ' - Timeliner';
