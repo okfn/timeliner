@@ -21,7 +21,7 @@ jQuery(function($) {
 
   $('.js-embed').on('click', function(e) {
     e.preventDefault();
-    var url = window.location.href + '&embed=1';
+    var url = window.location.href.replace(/#.*$/, "") + '&embed=1'; // for now, just remove any fragment id
     var val = '<iframe src="' + url + '" frameborder="0" style="border: none;" width="100%" height="780;"></iframe>';
     $('.embed-modal textarea').val(val);
     $('.embed-modal').modal();  
@@ -55,8 +55,21 @@ var TimelinerView = Backbone.View.extend({
     // $el.width((this.el.width() - 45)/2.0);
     this.timeline = new recline.View.Timeline({
       model: this.model,
-      el: this.$el.find('.timeline')
+      el: this.$el.find('.timeline'),
+      state: {
+        timelineJSOptions: {
+          "hash_bookmark": true
+        }
+      }
     });
+
+    // Timeline will sort the entries by timestamp, but we need the order to be the same for the map
+    this.model.records.comparator = function (a, b) {
+      var a = self.timeline._parseDate(a.get("start"));
+      var b = self.timeline._parseDate(b.get("start"));
+      return a - b;
+    }
+
     this.timeline.convertRecord = function(record, fields) {
       if (record.attributes.start[0] == "'") {
         record.attributes.start = record.attributes.start.slice(1);
@@ -92,7 +105,6 @@ var TimelinerView = Backbone.View.extend({
       out.startDate = String(out.startDate.getFullYear()) + ',' + String(out.startDate.getMonth()+1) + ',' + String(out.startDate.getDate());
       return out;
     }
-    this.timeline.render();
 
     this.map = new recline.View.Map({
       model: this.model
@@ -109,24 +121,31 @@ var TimelinerView = Backbone.View.extend({
 
     this.map.geoJsonLayerOptions.pointToLayer = function(feature, latlng) {
       var marker = new L.Marker(latlng);
-      var record = this.model.records.getByCid(feature.properties.cid).toJSON();
-      marker.bindLabel(record.title);
+      var record = this.model.records.getByCid(feature.properties.cid);
+      var recordAttr = record.toJSON();
+      marker.bindLabel(recordAttr.title);
 
       // customize with icon column
-      if (record.icon!== undefined) {
-	var eventIcon = L.icon({
-	    iconUrl: record.icon,
-	    iconSize:     [100, 20], // size of the icon
-	    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-	    shadowAnchor: [4, 62],  // the same for the shadow
-	    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-	});
+      if (recordAttr.icon !== undefined) {
+        var eventIcon = L.icon({
+            iconUrl: recordAttr.icon,
+            iconSize:     [100, 20], // size of the icon
+            iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+            shadowAnchor: [4, 62],  // the same for the shadow
+            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+        });
         marker.setIcon(eventIcon);
       }
-
       
       // this is for cluster case
       this.markers.addLayer(marker);
+
+      // When a marker is clicked, update the fragment id, which will in turn update the timeline
+      marker.on("click", function (e) {
+        var i = _.indexOf(record.collection.models, record);
+        window.location.hash = "#" + i.toString();
+      });
+
       return marker;
     };
     this.map.render();
@@ -134,6 +153,12 @@ var TimelinerView = Backbone.View.extend({
     // load the data
     this.model.fetch()
       .done(function() {
+        // We postpone rendering until now, because otherwise timeline might try to navigate to a non-existent marker
+        self.timeline.render();
+        // Nasty hack. Timeline ignores hashchange events unless is_moving == True. However, once it's True, it can never
+        // become false again. The callback associated with the UPDATE event sets it to True, but is otherwise a no-op.
+        $("div.slider").trigger("UPDATE");
+
         var title = self.model.get('spreadsheetTitle');
         $('.navbar .brand').text(title);
         document.title = title + ' - Timeliner';
