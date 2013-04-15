@@ -141,6 +141,9 @@ var TimelinerView = Backbone.View.extend({
       .done(function() {
         // We postpone rendering until now, because otherwise timeline might try to navigate to a non-existent marker
         self.timeline.render();
+        // Nasty hack. Timeline ignores hashchange events unless is_moving == True. However, once it's True, it can never
+        // become false again. The callback associated with the UPDATE event sets it to True, but is otherwise a no-op.
+        $("div.slider").trigger("UPDATE");
 
         var title = self.model.get('spreadsheetTitle');
         $('.navbar .brand').text(title);
