@@ -1,3 +1,6 @@
+(function () {
+  "use strict";
+
 jQuery(function($) {
   var state = recline.View.parseQueryString(decodeURIComponent(window.location.search));
   if (state) {
@@ -169,3 +172,5 @@ var TimelinerView = Backbone.View.extend({
       });
   }
 });
+
+})();

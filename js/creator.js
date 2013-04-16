@@ -1,3 +1,6 @@
+(function () {
+  "use strict";
+
 jQuery(function($) {
   var theList = new ItemList();
   theList.fetch();
@@ -173,4 +176,4 @@ var ItemListView = Backbone.View.extend({
 
 });
 
-
+})();
