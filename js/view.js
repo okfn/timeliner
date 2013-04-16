@@ -149,6 +149,9 @@ var TimelinerView = Backbone.View.extend({
         window.location.hash = "#" + i.toString();
       });
 
+      // Stored so that we can get from record to marker in hashchange callback
+      record.marker = marker;
+
       return marker;
     };
     this.map.render();
@@ -170,6 +173,16 @@ var TimelinerView = Backbone.View.extend({
         // do this here rather than in page so it picks up title correctly
         !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
       });
+
+    $(window).on("hashchange", function () {
+      var hash = window.location.hash.substring(1);
+      if (parseInt(hash, 10)) {
+        var record = self.model.records.at(hash);
+        if (record && record.marker) {
+          record.marker.openPopup();
+        }
+      }
+    });
   }
 });
 
