@@ -27,7 +27,7 @@ function queryWPTitles(query, cb) {
     format: 'json',
     action: 'opensearch',
     search: query
-  }
+  };
   var url = 'http://en.wikipedia.org/w/api.php';
   $.ajax({
     url: url,
@@ -123,7 +123,7 @@ var ItemListView = Backbone.View.extend({
       item.destroy();
     });
 
-    for (key in info) {
+    for (var key in info) {
       $el.find('.summary .' + key).text(info[key]);
     }
     $el.find('.summary .thumbnail').attr('src', info.image);
@@ -157,7 +157,7 @@ var ItemListView = Backbone.View.extend({
           if (item.location.lat) {
             return '' + item.location.lat + ',' + item.location.lon;
           } else {
-            return ''
+            return '';
           }
         } else {
           var out = item[field.toLowerCase()];

@@ -9,7 +9,7 @@ jQuery(function($) {
     });
   }
   state.backend = 'gdocs';
-  if (state.embed!=undefined) {
+  if (state.embed !== undefined) {
     $('body').addClass('embed');
   }
   var dataset = new recline.Model.Dataset(state);
@@ -68,7 +68,7 @@ var TimelinerView = Backbone.View.extend({
       var a = self.timeline._parseDate(a.get("start"));
       var b = self.timeline._parseDate(b.get("start"));
       return a - b;
-    }
+    };
 
     this.timeline.convertRecord = function(record, fields) {
       if (record.attributes.start[0] == "'") {
@@ -89,7 +89,7 @@ var TimelinerView = Backbone.View.extend({
       if (record.get('image')) {
         out.asset = {
           media: record.get('image'),
-	  thumbnail: record.get('icon')
+          thumbnail: record.get('icon')
         };
       }
       out.text = record.get('description');
@@ -104,7 +104,7 @@ var TimelinerView = Backbone.View.extend({
       // do not want time part of the dates
       out.startDate = String(out.startDate.getFullYear()) + ',' + String(out.startDate.getMonth()+1) + ',' + String(out.startDate.getDate());
       return out;
-    }
+    };
 
     this.map = new recline.View.Map({
       model: this.model
@@ -113,7 +113,7 @@ var TimelinerView = Backbone.View.extend({
 
     // customize with icon column
     this.map.infobox = function(record) {
-      if (record.icon!== undefined) {
+      if (record.icon !== undefined) {
         return '<img src="' + record.get('icon') + '" width="100px"> ' +record.get('title');
       }
       return record.get('title');
