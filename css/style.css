@@ -94,16 +94,30 @@ body.view .controls .toolbox.hideme input {
   display: none;
 }
 
+body.view footer {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.data-views {
+  position: absolute;
+  top: 42px;
+  bottom: 41px;
+  left: 0;
+  right: 0;
+}
+
+.row-fluid, .row-fluid > div, .map, .map > div, .recline-map, .recline-map .map {
+  height: 100%;
+}
+
 .data-views .recline-map {
   margin-left: 0px;
 }
 
 .data-views .span4 {
   margin-left: 1%;
-}
-
-.recline-timeline .vmm-timeline, .data-views .recline-map .map {
-  height: 600px;
 }
 
 /* get attribution on one line ... */
@@ -121,6 +135,10 @@ body.view .controls .toolbox.hideme input {
 
 body.embed .navbar {
   display: none;
+}
+
+body.embed .data-views {
+  top: 0;
 }
 
 /**************************************************************
