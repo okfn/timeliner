@@ -124,7 +124,7 @@ var TimelinerView = Backbone.View.extend({
 
     this.map.geoJsonLayerOptions.pointToLayer = function(feature, latlng) {
       var marker = new L.Marker(latlng);
-      var record = this.model.records.getByCid(feature.properties.cid);
+      var record = this.model.records.get(feature.properties.cid);
       var recordAttr = record.toJSON();
       marker.bindLabel(recordAttr.title);
 
