@@ -10,6 +10,27 @@ jQuery(function($) {
     path +=  'view/?url=' + encodeURIComponent(source);
     window.location.href = path;
   });
+
+  $(".gdrive-import").click(function (e) {
+    e.preventDefault();
+    
+    var picker = new google.picker.PickerBuilder()
+      .disableFeature(google.picker.Feature.MULTISELECT_ENABLED)
+      .addView(google.picker.ViewId.SPREADSHEETS)
+      .setCallback(pickerCallback)
+      .build();
+    picker.setVisible(true);
+
+    function pickerCallback(data) {
+      var url = 'nothing';
+      if (data[google.picker.Response.ACTION] === google.picker.Action.PICKED) {
+        var doc = data[google.picker.Response.DOCUMENTS][0];
+        url = doc[google.picker.Document.URL];
+        $('input[name="source"]').val(url);
+      }
+    }
+  });
+
 });
 
 // Backwards compatability (pre Feb 2013)

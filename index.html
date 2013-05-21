@@ -41,7 +41,8 @@
                 <div class="control-group">
                   <label for="source" class="control-label">Google Spreadsheet URL</label>
                   <div class="controls">
-                    <input type="text" value="" name="source" class="input span11" placeholder="URL to Google Spreadsheet" />
+                    <input type="url" value="" name="source" class="input span10" placeholder="URL to Google Spreadsheet" />
+                    <button title="Select from Google Drive" class="gdrive-import btn"><i class="gdrive"></i></button>
                     <p class="help-block">The Timeliner uses data in a spreadsheet in Google Docs allowing you to edit the timeline by editing the spreadsheet.</p>
                   </div>
                 </div>
@@ -99,6 +100,12 @@
 </div> <!-- / container-fluid -->
   <!-- 3rd party JS libraries -->
   <script type="text/javascript" src="vendor/recline/vendor/jquery/1.7.1/jquery.js"></script>
+
+  <script src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    // setup gdocs file picker
+    google.load('picker', '1');
+  </script>
 
   <!-- non-library javascript specific to this demo -->
   <script type="text/javascript" src="js/app.js"></script>
