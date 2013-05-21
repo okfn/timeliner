@@ -86,7 +86,7 @@ var TimelinerView = Backbone.View.extend({
         out = null;
       }
       if (!out) {
-        alert('Failed to extract date from: ' + JSON.stringify(record.toJSON()));
+        if (typeof console !== "undefined" && console.warn) console.warn('Failed to extract date from: ' + JSON.stringify(record.toJSON()));
         return null;
       }
       if (record.get('image')) {
