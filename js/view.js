@@ -77,7 +77,7 @@ var TimelinerView = Backbone.View.extend({
       if (record.attributes.start[0] == "'") {
         record.attributes.start = record.attributes.start.slice(1);
       }
-      if (record.attributes.end[0] == "'") {
+      if (record.attributes.end && record.attributes.end[0] == "'") {
         record.attributes.end = record.attributes.end.slice(1);
       }
       try {
