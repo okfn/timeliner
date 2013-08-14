@@ -103,9 +103,6 @@ var TimelinerView = Backbone.View.extend({
         }
         out.text += '<p class="source">Source: ' + s + '</p>';
       }
-      // hacky but it will work ...
-      // do not want time part of the dates
-      out.startDate = String(out.startDate.getFullYear()) + ',' + String(out.startDate.getMonth()+1) + ',' + String(out.startDate.getDate());
       return out;
     };
 
