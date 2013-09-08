@@ -66,10 +66,12 @@ var TimelinerView = Backbone.View.extend({
       }
     });
 
-    // Timeline will sort the entries by timestamp, but we need the order to be the same for the map
+    // Timeline will sort the entries by timestamp, and we need the order to be
+    // the same for the map which runs off the model
     this.model.records.comparator = function (a, b) {
-      var a = self.timeline._parseDate(a.get("start"));
-      var b = self.timeline._parseDate(b.get("start"));
+      // VMM.Date.parse is the timelinejs date parser
+      var a = VMM.Date.parse(self.timeline._parseDate(a.get("start")));
+      var b = VMM.Date.parse(self.timeline._parseDate(b.get("start")));
       return a - b;
     };
 
