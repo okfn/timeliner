@@ -27,7 +27,7 @@ jQuery(function($) {
     var url = window.location.href.replace(/#.*$/, "") + '&embed=1'; // for now, just remove any fragment id
     var val = '<iframe src="' + url + '" frameborder="0" style="border: none;" width="100%" height="780;"></iframe>';
     $('.embed-modal textarea').val(val);
-    $('.embed-modal').modal();  
+    $('.embed-modal').modal();
   });
 });
 
@@ -115,10 +115,17 @@ var TimelinerView = Backbone.View.extend({
 
     // customize with icon column
     this.map.infobox = function(record) {
-      if (record.icon !== undefined) {
-        return '<img src="' + record.get('icon') + '" width="100px"> ' +record.get('title');
+      if (record.get('webpage') !== undefined){
+        if (record.icon !== undefined) {
+          return '<a href="' + record.get('webpage') + '">' + '<img src="' + record.get('icon') + '" width="100px"> ' +record.get('title') + '</a>';
+        }
+        return '<a href="' + record.get('webpage') + '">' + record.get('title') + '</a>';
+      }else{
+        if (record.icon !== undefined) {
+          return '<img src="' + record.get('icon') + '" width="100px"> ' +record.get('title');
+        }
+        return record.get('title');
       }
-      return record.get('title');
     };
 
     this.map.geoJsonLayerOptions.pointToLayer = function(feature, latlng) {
@@ -138,7 +145,7 @@ var TimelinerView = Backbone.View.extend({
         });
         marker.setIcon(eventIcon);
       }
-      
+
       // this is for cluster case
       this.markers.addLayer(marker);
 
