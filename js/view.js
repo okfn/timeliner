@@ -11,6 +11,13 @@ jQuery(function($) {
       state[key] = value;
     });
   }
+  var url = 'http://timemapper.okfnlabs.org/view?url=' + encodeURIComponent(state.url);
+  if (state.embed) {
+    url += '&embed=true';
+  }
+  window.location = url;
+  return;
+  /*
   state.backend = 'gdocs';
   if (state.embed !== undefined) {
     $('body').addClass('embed');
@@ -29,6 +36,7 @@ jQuery(function($) {
     $('.embed-modal textarea').val(val);
     $('.embed-modal').modal();  
   });
+  */
 });
 
 var TimelinerView = Backbone.View.extend({

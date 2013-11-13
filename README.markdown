@@ -1,3 +1,7 @@
+# DEPRECATED in favour of new TimeMapper app - see <https://github.com/okfn/timemapper>
+
+----
+
 Timeliner is a simple javascript apps to create and share beautiful timelines
 and timemaps build using [ReclineJS](http://reclinejs.com/).
 
